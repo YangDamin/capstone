@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fuser',
     'management',
+    'account',
+    # 'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -77,10 +80,15 @@ WSGI_APPLICATION = 'moa.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': {    
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'moa',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': 3306,
+    },
+
 }
 
 
@@ -125,3 +133,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'moa/static'),
 ]
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES' : [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }

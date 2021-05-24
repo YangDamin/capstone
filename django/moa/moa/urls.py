@@ -22,6 +22,7 @@ from management import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('fuser/', include('fuser.urls')),
+    path('account/', include('account.urls')),
     path('management/', include('management.urls')),
     path('', home),
 ]

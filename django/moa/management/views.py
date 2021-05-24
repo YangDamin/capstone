@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Manager
 from fuser.models import Fuser
+from django.db.models import Q
+from rest_framework.parsers import JSONParser
 
 # Create your views here.
 def cntcoupon(request):
@@ -16,7 +18,7 @@ def cntcoupon(request):
         manager = Manager(
             cafe_name = cafe_name,
             cnt_stamp = cnt_stamp,
-            cafe_explain = cafe_explain
+            cafe_explain = cafe_explain,
         )
 
         manager.save()
@@ -32,6 +34,15 @@ def aboutcoupon(request):
     if request.method == "get":
         return render(request, 'indexh.html')
     elif request.method == "post":
-        id_phone = request.POST.get('qrcode', None)
-        id, phone = id_phone.split(',')
+        user_id = request.POST.get('userid', None)
+        user_phone = request.POST.get('userphone', None)
+        
+        data = JSONParser().parse(request)
+        search_id = data['user_id']
+
+        
+            
+
+
+
         

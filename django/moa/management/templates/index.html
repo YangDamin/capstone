@@ -50,9 +50,11 @@
                     <div class="idandname"><input type="text" id="qrscan" name="qrcode"/></div><br>
                     <input type="button" onclick="slice()" value="qr" /><br>
                     <br>
-                    <div id="userid"></div>
-                    <div id="userphone"></div>
+                    <div id="userid" name="userid"></div>
+                    <div id="userphone" name="userphone"></div>
                     <br>
+                    <div>{{Customer.user_id}}</div>
+                    <div>{{Customer.phone}}</div>
                     <input type="button" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;
                     <input type="button" name="use_coupon" value="쿠폰 사용" />
                 </form>
