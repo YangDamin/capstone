@@ -40,7 +40,7 @@
                     </form> 
             </div>
         </div>
-    {% endblock %}
+
         <div class="right">
             <div style="text-align: center;"><h5>QR코드 인식</h5></div><br>
             <div class="qrread"><br>
@@ -51,8 +51,8 @@
                     <div class="idandname"><input type="text" id="qrscan" name="qrcode"/></div><br>
                     <input type="button" onclick="slice()" value="qr" /><br>
                     <br>
-                    <div id="userid" name="userid"></div>
-                    <div id="userphone" name="userphone"></div>
+                    아이디   : <input type="text" id="userid" name="userid"/><br><br>
+                    전화번호 : <input type="text" id="userphone" name="userphone"/><br>
                     <br>
                     <div>{{Customer.user_id}}</div>
                     <div>{{Customer.phone}}</div>
@@ -63,6 +63,7 @@
         </div>
     </article>
     <a href="{% url 'logout' %}" class="btn_logout">로그아웃</a>
+    {% endblock %}
 </body>
 </html>
 <script>
@@ -103,7 +104,7 @@
         id = ary[0];
         phone = ary[1];
 
-        userid.innerHTML = "아이디 : " + id;
-        userphone.innerHTML = "휴대폰 : " + phone;
+        userid.value = id;
+        userphone.value = phone;
     }
 </script>

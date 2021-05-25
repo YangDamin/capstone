@@ -5,6 +5,7 @@ from .models import Manager
 from fuser.models import Fuser
 from django.db.models import Q
 from account.models import Customer
+from coupon.models import Coupon
 
 # Create your views here.
 def cafe_information(request):
@@ -42,5 +43,9 @@ def fuser(request):
     context = {'fuser':fuser}
     return render(request, 'index.html', context)  
     
-# def coupon_control(request):
-#     # coupon = Customer.objects.filter(user_id)
+def coupon_control(request):
+    if request.method == "post":
+        find_user_id = request.POST.get('userid',None)
+        for current_user in Coupon.objects.filter(customer_id=find_user_id):
+            current_user.current_cnt
+        
