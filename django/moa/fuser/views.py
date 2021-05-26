@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Fuser
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import LoginForm
 from django.conf import settings
@@ -45,7 +45,6 @@ def login(request):
 
     else:
         form = LoginForm()
-    # return redirect('')
     return render(request, 'login.html', {'form':form})
   
   
@@ -54,7 +53,8 @@ def home(request):
 
     if user_pk:
         fuser = Fuser.objects.get(pk=user_pk)
-        return redirect('/management/index')
+        return redirect('/management/aboutcoupon')
+        # return HttpResponseRedirect("management/{}/index/".format(fuser.user_id))
     return redirect("/fuser/login")
 
 def logout(request):

@@ -1,5 +1,5 @@
 from django.db import models
-from fuser.models import Fuser
+
 
 # Create your models here.
 class Manager(models.Model):
