@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from fuser.views import home
-from management import views
 
 
 urlpatterns = [
@@ -24,6 +23,7 @@ urlpatterns = [
     path('fuser/', include('fuser.urls')),
     path('account/', include('account.urls')),
     path('management/', include('management.urls')),
+    path('coupon/', include('coupon.urls')),
     path('', home),
 ]
 

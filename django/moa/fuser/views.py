@@ -53,8 +53,7 @@ def home(request):
 
     if user_pk:
         fuser = Fuser.objects.get(pk=user_pk)
-        return redirect('/management/aboutcoupon')
-        # return HttpResponseRedirect("management/{}/index/".format(fuser.user_id))
+        return redirect('/coupon/aboutcoupon')
     return redirect("/fuser/login")
 
 def logout(request):

@@ -26,7 +26,7 @@ SECRET_KEY = 'pq2i$)*pc9yfwl&&c$^zcpdcr$&*w+ju3n+9q5j%9f@oj+q_7-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153']
+ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153', '210.115.225.11']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'management',
     'account',
     'coupon',
-    # 'rest_framework',
+    'rest_framework',
 
 ]
 
@@ -136,8 +136,8 @@ STATICFILES_DIRS = [
 ]
 
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES' : [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
 from .models import Manager
-from django.db.models import Q
-from account.models import Customer
-from coupon.models import Coupon
+
 
 # Create your views here.
 
@@ -12,12 +8,6 @@ def logout(request):
     if request.session['user']:
         del(request.session['user'])
         return redirect('/fuser/login')
-
-def aboutcoupon(request):
-    if request.method == "post":
-        find_user_id = request.POST.get('userid', None)
-        find_user_phone = request.POST.get('userphone', None)
-    return render(request, 'aboutcoupon.html')
 
 def aboutcafe(request):
     if request.method == "post":
@@ -32,38 +22,4 @@ def aboutcafe(request):
         )
 
         manager.save()
-    return redirect('/management/aboutcoupon')
-
-
-# def cafe_information(request):
-#     if request.method=="GET":
-#         return render(request, 'setting.html')
-#     elif request.method=="POST":
-#         cafe_name = request.POST.get('cafe_name', None)
-#         cnt_stamp = request.POST.get('cnt_stamp', None)
-#         cafe_explain = request.POST.get('cafe_explain', None)
-
-#         manager = Manager(
-#             cafe_name = cafe_name,
-#             cnt_stamp = cnt_stamp,
-#             cafe_explain = cafe_explain,
-#         )
-
-#         manager.save()
-#     return redirect('/')
-#     # return redirect('/management/setting')
-
-# def aboutcoupon(request):
-#     if request.method == "post":
-#         find_user_id = request.POST.get('userid',None)
-#         find_user_phone = request.POST.get('userphone',None)
-        
-#         target = Coupon.objects.filter(customer_id=find_user_id).values('current_cnt')
-
-#         if request.POST.get('button') == 'save_coupon':
-#             target = taget + 1
-#             target.save()
-#     return render(request, 'index.html')
-
-# def setting(request):
-    # return redirect('/management/setting')
+    return render(request,'aboutcafe.html')
