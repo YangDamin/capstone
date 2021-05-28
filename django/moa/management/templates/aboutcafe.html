@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>카페 기본 설정</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/a.css'%}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -16,23 +17,23 @@
 <body>
     {% block contents %}
     <header id="header">
-        <div class="moa">MOA</div>
+        <h2 style="text-align: center;">MOA</h2>
     </header>
     <articla class="article">
         <div class="cntcoupon">
-            <div style="text-align: center;"><h5>기본 설정</h6></div><br>
+            <div style="text-align: center;"><h5>기본 설정</h5></div><br>
             <div class="bnt">
-                <form method="post" action=".">
+                <form method="POST" action=".">
                     {% csrf_token %}
                     <div>카페 이름</div>
-                    <input type="text" name="cafe_name" placeholder="등록 카페 명칭"/><br>
+                    <input type="text" class="form-control" name="cafe_name" placeholder="등록 카페 명칭 ( 지점명 까지 )"/><br>
                     <br><div>쿠폰 개수 설정</div>
-                    <input type="number" step="1" min="1" placeholder="최소 1" name="cnt_stamp"/>
+                    <input type="number" class="form-control" step="1" min="1" placeholder="최소 1" name="cafe_stamp"/>
                     </div><br>
                     <div class="explain">카페 설명</div>
                     <sup>(<span id="nowByte">0</span>/200bytes)</sup>
                     <textarea rows="10" class="form-control" id="textArea_byteLimit" name="cafe_explain" onkeyup="fn_checkByte(this)"></textarea>
-                    <br><button type="submit" class="cafe_info">등록</button>
+                    <br><button type="submit" class="btn btn-primary">등록</button>
                 </form> 
         </div>
     </articla>

@@ -15,13 +15,14 @@ def register(request):
     elif request.method == "POST":
         user_id = request.POST.get('user_id', None)
         user_name = request.POST.get('user_name', None)
+        cafe_name = request.POST.get('cafe_name', None)
         password = request.POST.get('password', None)
         re_password = request.POST.get('re_password', None)
         user_email = request.POST.get('user_email', None)
 
         res_data = {}
 
-        if not(user_id and user_name and password and re_password and user_email):
+        if not(user_id and user_name and cafe_name and password and re_password and user_email):
             res_data['error'] = "모든 값을 입력하세요"
         elif password != re_password:
             res_data['error'] = "비밀번호가 다름"
@@ -29,6 +30,7 @@ def register(request):
             fuser = Fuser(
                 user_id = user_id,
                 user_name = user_name,
+                cafe_name = cafe_name,
                 password = make_password(password),
                 user_email = user_email,
             )

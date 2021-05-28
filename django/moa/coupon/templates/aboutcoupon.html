@@ -3,9 +3,8 @@
 <head>
     <title>매장 관리</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/a.css'%}">
+    <!-- <link rel="stylesheet" href="{% static 'css/a.css'%}"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -14,34 +13,31 @@
 </head>
 <body>
     {% block contents %}
+    
     <header id="header">
-        <div class="moa">MOA</div>
+        <h2 style="text-align: center;">MOA</h2>
     </header>
-
-    <article class="article">
-        <div class="right">
             <div style="text-align: center;"><h5>QR코드 인식</h5></div><br>
             <div class="qrread"><br>
-                <input type="button" onclick="document.getElementById('qrscan').focus()" value="QR인식"><br>
+                <input type="button" class="form-control" onclick="document.getElementById('qrscan').focus()" value="QR인식"><br>
                 <br>
-                <form method="post" action="." onsubmit="return false;">
+                <form method="post" action=".">
                     {%csrf_token%}
-                    <div class="idandname"><input type="text" id="qrscan" name="qrcode"/></div><br>
-                    <input type="button" onclick="slice()" value="qr" /><br>
+                    <div class="idandname"><input type="text" class="form-control" id="qrscan" name="qrcode"/></div><br>
+                    <input type="button" class="form-control" onclick="slice()" value="qr" /><br>
                     <br>
-                    아이디   : <input type="text" id="userid" name="userid"/><br><br>
-                    전화번호 : <input type="text" id="userphone" name="userphone"/><br>
+                    아이디   : <input type="text" class="form-control" id="userid" name="userid"/><br><br>
+                    전화번호 : <input type="text" class="form-control" id="userphone" name="userphone"/><br>
                     <br>
-                    {% for coupon in coupons%}
-                    <div>{{coupon.user_id}}</div>
-                    <div>{{coupon.phone}}</div>
-                    {% endfor %}
-                    <input type="button" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;
-                    <input type="button" name="use_coupon" value="쿠폰 사용" />
+                    <input type="submit" class="form-control" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;
+                    <input type="submit" class="form-control" name="use_coupon" value="쿠폰 사용" />
                 </form>
-            </div>
-        </div>
-    </article>
+           </div>
+           
+    {% for customer in customers %}
+    <div>{{customer.current_cnt}}</div>
+    <div>{{customer.customer_id}}</div><br>
+    {% endfor %}
     <a href="{% url 'logout' %}" class="btn_logout">로그아웃</a><br>
     <a href="/management/aboutcafe" class="btn_cafe">개인정보 설정</a>
     

@@ -21,23 +21,11 @@ body{
     overflow: hidden;
     position: relative;
 }
-.left{
+
+.qr{
     float: left;
     width: 600px;
     height: 750px;
-    margin: 55px 15px 20px;
-    left: 150px;
-    position: relative;
-    padding: 5px;
-    border: 1px solid;
-    border-radius: 5px;
-}
-.right{
-    float: right;
-    width: 600px;
-    height: 750px;
-    margin: 55px 15px 20px;
-    right: 50%;
     position: relative;
     padding: 5px;
     border: 1px solid;
