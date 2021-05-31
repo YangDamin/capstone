@@ -6,6 +6,8 @@ from .forms import LoginForm
 from django.conf import settings
 from . import forms
 from django.contrib import auth
+from django.contrib.auth import login as auth_login
+from django.contrib.auth.forms import AuthenticationForm
 
 
 # Create your views here.
@@ -38,6 +40,17 @@ def register(request):
             fuser.save()
         return redirect('/fuser/login')
     
+# def login(request):
+#     if request.method == "POST":
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             request.session['user'] = form.user_id
+#             return redirect('/')
+
+#     else:
+#         form = LoginForm()
+#     return render(request, 'login.html', {'form':form})
+
 def login(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -49,6 +62,7 @@ def login(request):
         form = LoginForm()
     return render(request, 'login.html', {'form':form})
   
+
   
 def home(request):
     user_pk = request.session.get('user')

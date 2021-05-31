@@ -1,6 +1,8 @@
 from django import forms
 from .models import Fuser
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth.models import User
+
 
 class LoginForm(forms.Form):
     user_id = forms.CharField(max_length=32, label="아이디",

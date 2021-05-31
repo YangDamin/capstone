@@ -91,11 +91,11 @@ DATABASES = {
     },
     # 'default': {    
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'devops.hallym.ac.kr',
+    #     'NAME': 'moa',
     #     'USER': 'eclipse',
-    #     'PASSWORD': '#hlsw2021',
+    #     'PASSWORD': '',
     #     'HOST': '210.115.230.153',
-    #     'PORT': 32722,
+    #     'PORT': 3306,
     # },
 
 }

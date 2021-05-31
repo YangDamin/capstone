@@ -17,7 +17,7 @@ body{
     margin-right: 50px;
 }
 .article{
-    width: 100%;
+    width: 50%;
     overflow: hidden;
     position: relative;
 }
