@@ -32,33 +32,38 @@ def aboutcoupon(request):
     
     session_id = request.session.session_key
     user = request.session['user']
+    find_cafe = Fuser.objects.get(user_id=user).cafe_name
 
-    contents = {'user': user, 'session_id': session_id}
-
-    if request.method == "POST":
+    if request.method == "POST":    
         find_user_id = request.POST.get('userid', None)
         find_user_phone = request.POST.get('userphone', None)
-        
-
-        current_cnt = Coupon.objects.get(customer_id=find_user_id)
-        cafe = Fuser.objects.get(user_id='무중카페').cafe_name 
-        stamp = Manager.objects.get(cafe_name=cafe).cafe_stamp
+            
+        customer = Coupon.objects.get(customer_id=find_user_id)
     
-        if request.POST.get('save_coupon'):        
-            current_cnt.current_cnt = current_cnt.current_cnt + 1
-            current_cnt.save()
-            return render(request, 'aboutcoupon.html', {'current_cnt':current_cnt.current_cnt})            
+        if request.POST.get('look_coupon'):
+            
+            cnt = customer.current_cnt
+            messages.add_message(request, messages.INFO,'쿠폰 개수 %d'%(cnt))
+            return render(request, 'aboutcoupon.html', {'customer':customer.current_cnt})            
+        
+        elif request.POST.get('save_coupon'):
+            customer.current_cnt = customer.current_cnt + 1
+            customer.save()
+            return render(request, 'aboutcoupon.html', {'customer':customer.current_cnt})            
         
         elif request.POST.get('use_coupon'):
-            if current_cnt.current_cnt >= stamp:
-                avail = current_cnt.current_cnt // stamp
+            stamp = Manager.objects.get(cafe_name=find_cafe).cafe_stamp
+    
+            if customer.current_cnt >= stamp:
+                avail = customer.current_cnt // stamp
                 messages.info(request, '사용 가능 %d'%(avail))
-                current_cnt.current_cnt = current_cnt.current_cnt - stamp
-                current_cnt.save()
-                return render(request, 'aboutcoupon.html', {'current_cnt':current_cnt.current_cnt})
+                customer.current_cnt = customer.current_cnt - stamp
+                customer.save()
+                return render(request, 'aboutcoupon.html', {'current_cnt':customer.current_cnt})
             else:
-                return render(request, 'aboutcoupon.html', {'current_cnt':current_cnt.current_cnt})
+                return render(request, 'aboutcoupon.html', {'current_cnt':customer.current_cnt})
             
-
-
+    contents = {'user': user, 'session_id': session_id, 'find_cafe':find_cafe}
+   
     return render(request, 'aboutcoupon.html', contents)
+

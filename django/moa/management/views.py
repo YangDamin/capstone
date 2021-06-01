@@ -7,6 +7,12 @@ def logout(request):
         return redirect('/fuser/login')
 
 def aboutcafe(request):
+    session_id = request.session.session_key
+    user = request.session['user']
+
+    contents = {'user': user, 'session_id': session_id}
+
+
     if request.method == "GET":
         return render(request, 'aboutcafe.html')
     elif request.method == "POST":
@@ -26,5 +32,4 @@ def aboutcafe(request):
         )
 
         manager.save()
-    return render(request,'aboutcafe.html')
-    # return redirect('/')
+    return render(request,'aboutcafe.html', contents)

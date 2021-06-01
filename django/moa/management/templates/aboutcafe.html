@@ -22,6 +22,7 @@
     <articla class="article">
         <div class="cntcoupon">
             <div style="text-align: center;"><h5>기본 설정</h5></div><br>
+            <h5 style="float: right">{{user}}</h5>
             <div class="bnt">
                 <form method="POST" action=".">
                     {% csrf_token %}
@@ -45,8 +46,8 @@
                     <br><button type="submit" class="btn btn-primary">등록</button>
                 </form> 
         </div>
-    </articla>
-    <a href="/coupon/aboutcoupon" class="btn_qr">qr페이지</a>
+    </articla><br>
+    <a href="/coupon/aboutcoupon" class="btn_qr">qr페이지</a><br>
     {% endblock %}
 </body>
 </html>

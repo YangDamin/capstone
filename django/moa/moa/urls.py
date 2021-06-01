@@ -26,4 +26,3 @@ urlpatterns = [
     path('coupon/', include('coupon.urls')),
     path('', home),
 ]
-

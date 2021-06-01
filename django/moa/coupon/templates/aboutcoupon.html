@@ -19,7 +19,7 @@
             <div style="text-align: center;"><h5>QR코드 인식</h5></div><br>
             <div class="qrread"><br>
 
-                <div>{{user}}</div>
+                <h5 style="float: right">{{find_cafe}}</h5>
                 <input type="button" class="form-control" onclick="document.getElementById('qrscan').focus()" value="QR인식"><br>
                 <br>
                 <form method="post" action=".">
@@ -27,25 +27,26 @@
                     <div class="idandname"><input type="text" class="form-control" id="qrscan" name="qrcode"/></div><br>
                     <input type="button" class="form-control" onclick="slice()" value="qr" /><br>
                     <br>
-                    아이디   : <input type="text" class="form-control" id="userid" name="userid"/><br><br>
-                    전화번호 : <input type="text" class="form-control" id="userphone" name="userphone"/><br>
+                    아이디    <input type="text" class="form-control" id="userid" name="userid"/><br><br>
+                    전화번호  <input type="text" class="form-control" id="userphone" name="userphone"/><br>
+                    <input type="submit" class="form-control" name="look_coupon" value="조회" />&nbsp;&nbsp;&nbsp;
+                    
                     <br>
                     <input type="submit" class="form-control" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;
                     <input type="submit" class="form-control" name="use_coupon" value="쿠폰 사용" />
                 </form>
             </div>
-           {% if messages %}
-            <div class="messages">
+            {% if messages %}
+            <div class="container">
                 {% for message in messages %}
-                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-                {% endfor %}
+                    <div class="alert alert-{{ message.tags }}">
+                    {{ message.tags }}
+                    {{ message.message }}
+                    </div>
+            {% endfor %}
             </div>
-            {% endif %}
+        {% endif %}
            
-    <!-- {% for customer in customers %}
-    <div>{{customer.current_cnt}}</div>
-    <div>{{customer.customer_id}}</div><br>
-    {% endfor %} -->
     <a href="{% url 'logout' %}" class="btn_logout">로그아웃</a><br>
     <a href="/management/aboutcafe" class="btn_cafe">개인정보 설정</a>
     

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pq2i$)*pc9yfwl&&c$^zcpdcr$&*w+ju3n+9q5j%9f@oj+q_7-'
-
+SECRET_KEY = '^t+4tb2=^36hc@0ggw!^kwgi#@j$t7i-6mv1xl2vsmb!#q(@jh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'account',
     'coupon',
     'rest_framework',
-
 ]
 
 MIDDLEWARE = [
@@ -84,21 +83,12 @@ WSGI_APPLICATION = 'moa.wsgi.application'
 DATABASES = {
     'default': {    
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moa',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': 3306,
-    },
-    # 'default': {    
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'moa',
-    #     'USER': 'eclipse',
-    #     'PASSWORD': '',
-    #     'HOST': '210.115.230.153',
-    #     'PORT': 3306,
-    # },
-
+    }
 }
 
 
@@ -134,19 +124,22 @@ USE_L10N = True
 
 USE_TZ = True
 
-SEESION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'moa/static'),
 ]
-
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' : [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+MESSAGE_LEVEL = messages_constants.DEBUG
+
+SESSION_SAVE_EVERY_REQUEST = True
