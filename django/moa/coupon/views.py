@@ -29,17 +29,19 @@ def coupon(request) : # in mobile app
 def aboutcoupon(request):
     customers = Coupon.objects.all()
     context= {'customers':customers}
+    
+    session_id = request.session.session_key
+    user = request.session['user']
+
+    contents = {'user': user, 'session_id': session_id}
 
     if request.method == "POST":
         find_user_id = request.POST.get('userid', None)
         find_user_phone = request.POST.get('userphone', None)
         
-        user_id = request.session.get('sessionid')
-
-        # user_cafe = request.session.get('user')
 
         current_cnt = Coupon.objects.get(customer_id=find_user_id)
-        cafe = Fuser.objects.get(user_id=user_cafe).cafe_name 
+        cafe = Fuser.objects.get(user_id='무중카페').cafe_name 
         stamp = Manager.objects.get(cafe_name=cafe).cafe_stamp
     
         if request.POST.get('save_coupon'):        
@@ -59,4 +61,4 @@ def aboutcoupon(request):
             
 
 
-    return render(request, 'aboutcoupon.html', context)
+    return render(request, 'aboutcoupon.html', contents)

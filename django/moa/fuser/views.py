@@ -40,27 +40,17 @@ def register(request):
             fuser.save()
         return redirect('/fuser/login')
     
-# def login(request):
-#     if request.method == "POST":
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             request.session['user'] = form.user_id
-#             return redirect('/')
-
-#     else:
-#         form = LoginForm()
-#     return render(request, 'login.html', {'form':form})
 
 def login(request):
     if request.method == "POST":
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            request.session['user'] = form.user_id
+        forms = LoginForm(request.POST)
+        if forms.is_valid():
+            request.session['user'] = forms.user_id
             return redirect('/')
 
     else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form':form})
+        forms = LoginForm()
+    return render(request, 'login.html', {'forms':forms})
   
 
   

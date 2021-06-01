@@ -4,6 +4,6 @@ from .models import Manager
 # Register your models here.
 class ManagerAdmin(admin.ModelAdmin):
     # pass
-    list_display = ('cafe_name','cafe_stamp', 'cafe_explain')
+    list_display = ('cafe_name','cafe_stamp', 'cafe_explain', 'longtitude', 'latitude', 'phone')
 
 admin.site.register(Manager, ManagerAdmin)
