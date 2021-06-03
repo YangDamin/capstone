@@ -27,7 +27,11 @@ SECRET_KEY =
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD:project/moa/moa/settings.py
+ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153', '210.115.225.11','localhost']
+=======
 ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153', '210.115.225.11']
+>>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c:django/moa/moa/settings.py
 
 # Application definition
 

@@ -17,9 +17,14 @@ from django.core.exceptions import ObjectDoesNotExist
 def coupon(request) : # in mobile app
     #특정 쿠폰 조회
     if request.method == "GET" : #input : (customer, store), output : (store_id, current_cnt)
+<<<<<<< HEAD
+        customer = request.GET.get('customer',None)
+        store = request.GET.get('store',None)
+=======
         data = JSONParser().parse(request)
         customer = data['customer']
         store = data['store']
+>>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c
         try :
             customer_obj = Customer.objects.get(user_id = customer)
         except : 
@@ -85,18 +90,33 @@ def coupon(request) : # in mobile app
         else :
             return HttpResponse(status = 404) #보내는 사람 스탬프 개수 부족
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c
 #아이디 받아서 쿠폰 리스트 출력하는 메소드
 #input : ('customer') output : (customer , store list)
 def coupon_list(request) :  
     if request.method == "GET" :
+<<<<<<< HEAD
+        customer = request.GET.get('customer',None)
+=======
         data = JSONParser().parse(request)
         customer = data['customer']
+>>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c
         try :
             customer_obj = Customer.objects.get(user_id = customer)
         except : 
             return HttpResponse(status=401)
             #customer 잘못됨
 
+<<<<<<< HEAD
+        obj = Coupon.objects.filter(customer = customer_obj)
+        serializer = CouponSerializer(obj, many = True)
+
+        return JsonResponse(serializer.data,safe = False)
+=======
+>>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c
 
 # on computer
 def aboutcoupon(request):
