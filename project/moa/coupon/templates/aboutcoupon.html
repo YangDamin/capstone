@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body oncontextmenu="return false">
     {% block contents %}
     
     <header id="header">
@@ -20,27 +20,27 @@
             <div class="qrread"><br>
 
                 <h5 style="float: right">{{find_cafe}}</h5>
-                <input type="button" class="form-control" onclick="document.getElementById('qrscan').focus()" value="QR인식"><br>
+                <input type="button" class="btn btn-success btn-lg btn-block" onclick="document.getElementById('qrscan').focus()" value="QR인식"><br>
                 <br>
-                <form method="post" action=".">
+                <form method="post" action="." class="form-horizontal">
                     {%csrf_token%}
                     <div class="idandname"><input type="text" class="form-control" id="qrscan" name="qrcode"/></div><br>
-                    <input type="button" class="form-control" onclick="slice()" value="qr" /><br>
+                    <input type="button" class="btn btn-success btn-lg btn-block" onclick="slice()" value="qr" /><br>
                     <br>
                     아이디    <input type="text" class="form-control" id="userid" name="userid"/><br><br>
-                    전화번호  <input type="text" class="form-control" id="userphone" name="userphone"/><br>
-                    <input type="submit" class="form-control" name="look_coupon" value="조회" />&nbsp;&nbsp;&nbsp;
+                    전화번호  <input type="text" class="form-control" id="userphone" name="userphone"/><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-info btn-lg" name="look_coupon" value="조회" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
-                    <br>
-                    <input type="submit" class="form-control" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;
-                    <input type="submit" class="form-control" name="use_coupon" value="쿠폰 사용" />
+                
+                    <input type="submit" class="btn btn-info btn-lg" name="save_coupon" value="적립" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-info btn-lg" name="use_coupon" value="쿠폰 사용" />
                 </form>
             </div>
             {% if messages %}
             <br><div class="container">
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}" style="text-align: center;">
-                    {{ message.message }}
+                    <div style="text-align: center;">
+                        {{ message.message }}
                     </div>
             {% endfor %}
             </div>
@@ -93,4 +93,14 @@
         userid.value = id;
         userphone.value = phone;
     }
+</script>
+<script>
+    function doNotReload(){
+        if ((event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116)){
+            event.keyCode = 0;
+            event.cancelBubble = true;
+            event.returnValue = false;
+        }
+    }
+    document.onkeydown = doNotReload;
 </script>

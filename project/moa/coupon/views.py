@@ -11,6 +11,7 @@ from .serializers import CouponSerializer
 from rest_framework.parsers import JSONParser
 from fuser.models import Fuser
 from management.models import Manager
+from django.core.exceptions import ObjectDoesNotExist
 
 @csrf_exempt
 def coupon(request) : # in mobile app
@@ -84,7 +85,6 @@ def coupon(request) : # in mobile app
         else :
             return HttpResponse(status = 404) #보내는 사람 스탬프 개수 부족
 
-
 #아이디 받아서 쿠폰 리스트 출력하는 메소드
 #input : ('customer') output : (customer , store list)
 def coupon_list(request) :  
@@ -97,6 +97,7 @@ def coupon_list(request) :
             return HttpResponse(status=401)
             #customer 잘못됨
 
+
 # on computer
 def aboutcoupon(request):
     customers = Coupon.objects.all()
@@ -106,35 +107,60 @@ def aboutcoupon(request):
     user = request.session['user']
     find_cafe = Fuser.objects.get(user_id=user).cafe_name
 
+    if Manager.objects.filter(cafe_name=find_cafe).exists():
+        cafe = Manager.objects.get(cafe_name=find_cafe)
+    else:
+        pass
+
     if request.method == "POST":    
         find_user_id = request.POST.get('userid', None)
         find_user_phone = request.POST.get('userphone', None)
             
-        customer = Coupon.objects.get(customer_id=find_user_id)
+        customer = Customer.objects.get(user_id=find_user_id)
     
         if request.POST.get('look_coupon'):
-            
-            cnt = customer.current_cnt
-            messages.add_message(request, messages.INFO,'쿠폰 개수 %d'%(cnt))
-            return render(request, 'aboutcoupon.html', {'customer':customer.current_cnt})            
-        
+            try:
+                if Coupon.objects.filter(customer = customer, store = cafe).exists():
+
+                    cnt = Coupon.objects.get(customer=customer, store=cafe).current_cnt
+                    messages.add_message(request, messages.INFO,'쿠폰 개수 %d'%(cnt))
+                    return render(request, 'aboutcoupon.html', {'customer':cnt})            
+                else:
+                    messages.info(request, '조회되는 쿠폰이 없습니다.')
+            except:
+                return HttpResponse(status=401)
         elif request.POST.get('save_coupon'):
-            customer.current_cnt = customer.current_cnt + 1
-            customer.save()
-            return render(request, 'aboutcoupon.html', {'customer':customer.current_cnt})            
+            try:
+                if Coupon.objects.filter(customer = customer, store = cafe).exists():
+                    cuc = Coupon.objects.get(customer=customer, store=cafe)
+                    cuc.current_cnt = cuc.current_cnt + 1
+                    cuc.save()
+                    messages.info(request, '쿠폰 개수 %d' %(cuc.current_cnt))
+                else:
+                    obj = Coupon(customer = customer, store = cafe, current_cnt = 1) 
+                    obj.save()
+                    messages.info(request, '쿠폰 개수 %d' %(obj.current_cnt))
+            except:
+                return HttpResponse(status=401)                    
+
+            return render(request, 'aboutcoupon.html')#, {'cuc':cuc.current_cnt}            
         
         elif request.POST.get('use_coupon'):
-            stamp = Manager.objects.get(cafe_name=find_cafe).cafe_stamp
-    
-            if customer.current_cnt >= stamp:
-                avail = customer.current_cnt // stamp
-                messages.info(request, '사용 가능 %d'%(avail))
-                customer.current_cnt = customer.current_cnt - stamp
-                customer.save()
-                return render(request, 'aboutcoupon.html', {'current_cnt':customer.current_cnt})
-            else:
-                return render(request, 'aboutcoupon.html', {'current_cnt':customer.current_cnt})
-            
+            try:
+                stamp = Manager.objects.get(cafe_name=find_cafe).cafe_stamp
+                cuc = Coupon.objects.get(customer=customer, store=cafe)
+                
+                if cuc.current_cnt >= stamp:
+                    if cuc.current_cnt % stamp == 0:
+                        avail = cuc.current_cnt // stamp
+                        messages.info(request, '사용 가능 %d'%(avail))
+                        cuc.current_cnt = cuc.current_cnt - stamp
+                        cuc.save()
+                else:
+                    messages.info(request, '현재 쿠폰 개수 : %d' %(cuc.current_cnt))
+                    return render(request, 'aboutcoupon.html', {'current_cnt':cuc.current_cnt})
+            except:
+                return HttpResponse(status=401)        
     contents = {'user': user, 'session_id': session_id, 'find_cafe':find_cafe}
    
     return render(request, 'aboutcoupon.html', contents)

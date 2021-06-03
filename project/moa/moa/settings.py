@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+
+# SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,5 +146,3 @@ REST_FRAMEWORK = {
 }
 
 MESSAGE_LEVEL = messages_constants.DEBUG
-
-SESSION_SAVE_EVERY_REQUEST = True
