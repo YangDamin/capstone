@@ -17,15 +17,14 @@ def customer_list(request) :
         return HttpResponse(status=400)
     #id or 폰번 or 이메일 중복체크 
     elif request.method == 'GET' :
-        para = JSONParser().parse(request)
-        info = int(para['info'])
-        data = para['data']
+        info = int(request.GET.get('info',None))
+        data = request.GET.get('data',None)
 
         if info == 0 : #id중복
             if (Customer.objects.filter(user_id=data).count()) == 0 :
-                return HttpResponse(status=200)
+                return HttpResponse(status=200) #중복아님
             else :
-                return HttpResponse(status=400)
+                return HttpResponse(status=400) #중복
         elif info == 1 : #이메일 중복
             if (Customer.objects.filter(email=data).count()) == 0 :
                 return HttpResponse(status=200)
@@ -41,31 +40,27 @@ def customer_list(request) :
     
 
 @csrf_exempt
-def customer(request) :
+def customer(request,user_id) :
+    try :
+        obj = Customer.objects.get(user_id = user_id)
+    except : 
+        return HttpResponse(status=400)
+
     #유저 정보 조회
     if request.method == "GET" :
-        data = JSONParser().parse(request)
-        user_id = data['user_id']
-        try :
-            obj = Customer.objects.get(user_id = user_id)
-        except :
-            return HttpResponse(status = 400)
-
         serializer = NoPasswordSerializer(obj)
         return JsonResponse(serializer.data, status = 200)
 
     #비밀번호 변경
     elif request.method == "PUT" :
         data = JSONParser().parse(request) 
-        user_id = data['user_id']
         existing_pw = data['existing_pw']
         new_pw = data['new_pw']
 
-        try :
-            obj = Customer.objects.get(user_id = user_id)
-        except :
-            return HttpResponse(status = 400) #잘못된 user_id
-        
+        print("obj_id : " + obj.user_id)
+        print("existing_pw : " + existing_pw)
+        print("new_pw : " + new_pw)
+
         if obj.password == existing_pw :
             if existing_pw != new_pw :
                 obj.password = new_pw
@@ -101,10 +96,9 @@ def login(request) :
 
 def find_pw(request) :
     if request.method == "GET" :
-        data = JSONParser().parse(request)
-        user_id = data["user_id"]
-        name = data['name']
-        birth = data['birth']
+        user_id = request.GET.get('user_id',None)
+        name = request.GET.get('name',None)
+        birth = request.GET.get('birth',None)
 
         try :
             obj = Customer.objects.get(user_id = user_id, name = name, birth = birth)
@@ -117,9 +111,8 @@ def find_pw(request) :
 
 def find_id(request) :
     if request.method == "GET" :
-        data = JSONParser().parse(request)
-        name = data['name']
-        phone = data['phone']
+        name = request.GET.get('name',None)
+        phone = request.GET.get('phone',None)
 
         try :
             obj = Customer.objects.get(name = name, phone = phone)

@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Manager
+from django.http import HttpResponse, JsonResponse 
+from .serializers import CafeSerializer
+
 
 def logout(request):
     if request.session['user']:
@@ -33,3 +36,10 @@ def aboutcafe(request):
 
         manager.save()
     return render(request,'aboutcafe.html', contents)
+
+def cafe_list(request) :
+    if request.method == "GET" :
+        cafe_list = Manager.objects.all()
+        serializer  = CafeSerializer(cafe_list,many=True)
+
+        return JsonResponse(serializer.data, safe=False)

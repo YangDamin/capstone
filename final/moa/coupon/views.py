@@ -15,11 +15,11 @@ from django.core.exceptions import ObjectDoesNotExist
 
 @csrf_exempt
 def coupon(request) : # in mobile app
+    
     #특정 쿠폰 조회
     if request.method == "GET" : #input : (customer, store), output : (store_id, current_cnt)
-        data = JSONParser().parse(request)
-        customer = data['customer']
-        store = data['store']
+        customer = request.GET.get('customer',None)
+        store = request.GET.get('store',None)
         try :
             customer_obj = Customer.objects.get(user_id = customer)
         except : 
@@ -40,26 +40,29 @@ def coupon(request) : # in mobile app
 
         return JsonResponse(serializer.data, status=200)
 
-    #스탬프 선물하기 메소드 
-    #input : (string send_id, string get_id, string store_name, int stamp_num)
-    #output : x
-    elif request.method == "PUT" :
+#스탬프 선물하기 메소드 
+#input : (string send_id, string get_id, string store_name, int stamp_num)
+# #output : x
+@csrf_exempt
+def present(request, send_id, get_id) :
+    try :
+        send_obj = Customer.objects.get(user_id = send_id)
+    except :
+        return HttpResponse(status = 400) #보내는 유저 id 잘못됨
+    try : 
+        get_obj = Customer.objects.get(user_id = get_id)
+    except :
+        return HttpResponse(status = 401) #받는 유저 id 잘못됨           
+           
+    if request.method == "PUT" :
         data = JSONParser().parse(request)
-        
-        try :
-            send_obj = Customer.objects.get(user_id = data['send_id'])
-        except :
-            return HttpResponse(status = 400) #보내는 유저 id 잘못됨
+
         try : 
-            get_obj = Customer.objects.get(user_id = data['get_id'])
-        except :
-            return HttpResponse(status = 401) #받는 유저 id 잘못됨           
-        try : 
-            store_obj = Manager.objects.get(cafe_name = data['store_name'])
+            store_obj = Manager.objects.get(cafe_name = data["cafe_name"])
         except :
             return HttpResponse(status = 402) #카페 이름 잘못됨
            
-        stamp_num = data['stamp_num'] #선물할 스탬프 개수
+        stamp_num = int(data['stamp_num']) #선물할 스탬프 개수
 
         try:
             sender_coupon_obj = Coupon.objects.get(customer = send_obj, store = store_obj)
@@ -89,13 +92,18 @@ def coupon(request) : # in mobile app
 #input : ('customer') output : (customer , store list)
 def coupon_list(request) :  
     if request.method == "GET" :
-        data = JSONParser().parse(request)
-        customer = data['customer']
+        customer = request.GET.get('customer',None)
         try :
             customer_obj = Customer.objects.get(user_id = customer)
         except : 
             return HttpResponse(status=401)
             #customer 잘못됨
+
+        obj = Coupon.objects.filter(customer = customer_obj)
+        serializer = CouponSerializer(obj, many = True)
+
+        return JsonResponse(serializer.data,safe = False)
+
 
 
 # on computer
