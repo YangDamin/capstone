@@ -22,16 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 
+SECRET_KEY = '84^ae(&oizdp&w1wv!6d9g34q_&8wxpu(gqz9960y4hb=^0=cj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD:project/moa/moa/settings.py
-ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153', '210.115.225.11','localhost']
-=======
 ALLOWED_HOSTS = ['127.0.0.1','210.115.230.153', '210.115.225.11']
->>>>>>> dda67a57f7d880300827d87d2f8ddafc0b5cd99c:django/moa/moa/settings.py
 
 # Application definition
 
@@ -93,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eclipse',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': 3306,
     }
