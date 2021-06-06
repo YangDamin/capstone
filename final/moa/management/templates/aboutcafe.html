@@ -23,6 +23,7 @@
         <div class="container">
             <div style="text-align: center;"><h5>기본 설정</h5></div><br>
             <h5 style="float: right">{{find_cafe}}</h5>
+		<div class="text-info">매장명 동일하게 입력시 수정 가능</div>
                 <form method="POST" action=".">
                     {% csrf_token %}
                     <div class="form-horizontal">카페 이름</div>
