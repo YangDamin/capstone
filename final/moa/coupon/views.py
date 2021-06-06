@@ -123,7 +123,6 @@ def aboutcoupon(request):
     if request.method == "POST":
         try:  
             find_user_id = request.POST.get('userid', None)
-            find_user_phone = request.POST.get('userphone', None)
                 
             customer = Customer.objects.get(user_id=find_user_id)
         except:

@@ -20,26 +20,25 @@
         <h2 style="text-align: center;">MOA</h2>
     </header>
     <article class="article">
-        <div class="cntcoupon">
+        <div class="container">
             <div style="text-align: center;"><h5>기본 설정</h5></div><br>
             <h5 style="float: right">{{find_cafe}}</h5>
-            <div class="bnt">
                 <form method="POST" action=".">
                     {% csrf_token %}
-                    <div>카페 이름</div>
+                    <div class="form-horizontal">카페 이름</div>
                     <input type="text" class="form-control" name="cafe_name" placeholder="등록 카페 명칭 ( 지점명 까지 )"/><br>
                     <br><div>쿠폰 개수 설정</div>
                     <input type="number" class="form-control" step="1" min="1" placeholder="최소 1" name="cafe_stamp"/>
-                    </div><br>
+                    <br>
                     <br><div>위도</div>
                     <input type="text" class="form-control" placeholder="37~38 ( 소수점 모두 입력 )" name="longitude"/>
-                    </div><br>
+                    <br>
                     <br><div>경도</div>
                     <input type="text" class="form-control" placeholder="127~129 ( 소수점 모두 입력 )" name="latitude"/>
-                    </div><br>
+                    <br>
                     <br><div>전화번호</div>
                     <input type="text" class="form-control" placeholder="01012341234" name="phone"/>
-                    </div><br>
+                    <br>
                     <div class="explain">카페 설명</div>
                     <sup>(<span id="nowByte">0</span>/200bytes)</sup>
                     <textarea rows="10" class="form-control" id="textArea_byteLimit" name="cafe_explain" onkeyup="fn_checkByte(this)"></textarea>
