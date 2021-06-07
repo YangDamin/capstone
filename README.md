@@ -23,7 +23,7 @@
 
 ## 시스템 구조도
 
-   <img src="/img/system_structure.png" width="450" height="330">
+   <img src="/img/structure.png" width="450" height="330">
 ## 기능
 
 ## 개발환경
