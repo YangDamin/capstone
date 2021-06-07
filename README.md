@@ -1,2 +1,2 @@
-# capstone
+# MOA
 ## Bigdata capstone design
