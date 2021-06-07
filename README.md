@@ -7,6 +7,8 @@
 ## 팀
 - 팀명 : Eclipse      
 - 로고 
+     
+   <img src="/img/MOA_Logo.png" width="300" height="300">
 - 팀원 및 역할 
   - 최무중 : server 개발(django) 
   - 신성주 : server 개발(django)
