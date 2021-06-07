@@ -137,7 +137,7 @@ def aboutcoupon(request):
                 else:
                     messages.info(request, '조회되는 쿠폰이 없습니다.')
             except:
-                return HttpResponse(status=401)
+                return HttpResponse(status=406)
         elif request.POST.get('save_coupon'):
             try:
                 if Coupon.objects.filter(customer = customer, store = cafe).exists():
@@ -150,7 +150,7 @@ def aboutcoupon(request):
                     obj.save()
                     messages.info(request, '쿠폰 개수 %d' %(obj.current_cnt))
             except:
-                return HttpResponse(status=401)                    
+                return HttpResponse(status=406)                    
 
             return render(request, 'aboutcoupon.html')#, {'cuc':cuc.current_cnt}            
         
@@ -170,7 +170,7 @@ def aboutcoupon(request):
                     messages.info(request, '현재 쿠폰 개수 : %d' %(cuc.current_cnt))
                     return render(request, 'aboutcoupon.html', {'current_cnt':cuc.current_cnt})
             except:
-                return HttpResponse(status=401)        
+                return HttpResponse(status=406)        
     contents = {'user': user, 'session_id': session_id, 'find_cafe':find_cafe}
    
     request.session['user'] = user
