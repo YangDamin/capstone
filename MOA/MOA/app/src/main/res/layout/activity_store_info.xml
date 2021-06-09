@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".StoreInfo">
+    <androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:background="@color/green"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:text="매장 상세정보"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="23dp"
+            android:fontFamily="@font/jal"
+            android:layout_gravity="center" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/storename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="가게명"
+        android:textSize="23dp"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/jal"
+        android:textColor="@color/black"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ced4da"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="010-4853-4322"
+            android:layout_margin="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ced4da"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위치"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강원도 춘천시"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ced4da"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="거리"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/jal"
+            android:text="--"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ced4da"/>
+
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="25dp"
+        android:id="@+id/map"
+        tools:context=".StoreInfo"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+</LinearLayout>

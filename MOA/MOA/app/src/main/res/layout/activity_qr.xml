@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:orientation="vertical"
+    tools:context=".qr">
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text = "x"
+        android:layout_gravity="right"
+        android:backgroundTint="@color/white"
+        android:textColor = "@color/black"
+        android:id = "@+id/qrBtn">
+    </Button>
+
+    <ImageView
+        android:id="@+id/qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+    </ImageView>
+
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@color/green">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디 찾기"
+            android:textSize="30dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/findid_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="이름"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="16dp"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/findid_phone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/jal"
+            android:hint="핸드폰 번호"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16dp"
+            android:maxLength="11"/>
+
+        <Button
+            android:id="@+id/btnFindID"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="아이디 찾기"
+            android:fontFamily="@font/jal"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/green" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 찾기"
+            android:textSize="30dp"
+            android:fontFamily="@font/jal"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/findpw_ID"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="아이디"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="16dp"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/findpw_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="이름"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="16dp"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/findpw_birth"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="생년월일"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="16dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnFindPW"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 찾기"
+            android:fontFamily="@font/jal"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/green"/>
+
+
+    </LinearLayout>
+</LinearLayout>

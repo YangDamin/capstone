@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/ic_launcher_round"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/Store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가게명"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/jal"
+            android:layout_marginBottom="5dp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+        <TextView
+            android:id="@+id/Stamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스탬프 갯수"
+            android:textSize="20dp"
+            android:fontFamily="@font/jal"
+            android:textColor="#1B5E20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개"
+            android:textSize="20dp"
+            android:fontFamily="@font/jal"
+            android:textColor="#1B5E20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="20dp"
+            android:fontFamily="@font/jal"
+            android:textColor="#1B5E20">
+        </TextView>
+
+        <TextView
+            android:id="@+id/totalStamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스탬프 갯수"
+            android:textSize="20dp"
+            android:fontFamily="@font/jal"
+            android:textColor="#1B5E20"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개"
+            android:textSize="20dp"
+            android:fontFamily="@font/jal"
+            android:textColor="#1B5E20"/>
+    </LinearLayout>
+</LinearLayout>

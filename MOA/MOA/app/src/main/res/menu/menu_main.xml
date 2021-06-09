@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_stamp"
+            android:title="스탬프"></item>
+        <item
+            android:id="@+id/nav_findStore"
+            android:title="근처매장찾기"></item>
+        <item
+            android:id="@+id/nav_gift"
+            android:title="선물하기"></item>
+        <item
+            android:id="@+id/nav_mypage"
+            android:title="마이페이지"></item>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="로그아웃"></item>
+    </group>
+</menu>

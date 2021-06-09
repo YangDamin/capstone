@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="toolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/nanumb</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:color">@color/white</item>
+        <item name="android:statusBarColor">@color/green</item>
+
+    </style>
+</resources>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@color/green">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            android:layout_gravity="center"
+            android:text="회원가입"
+            android:fontFamily="@font/jal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/green">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <EditText
+            android:id = "@+id/ID"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLength="10"
+            android:hint = "아이디를 입력하세요"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="15dp"
+            android:textColor="@color/white">
+        </EditText>
+
+        <Button
+            android:id = "@+id/idCheckBtn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="중복확인"
+            android:fontFamily="@font/jal"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/green">
+        </Button>
+
+    </LinearLayout>
+
+    <EditText
+        android:id = "@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint = "이름"
+        android:maxLength="4"
+        android:fontFamily="@font/jal"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textSize="15dp"
+        android:textColor="@color/white">
+    </EditText>
+
+    <EditText
+        android:id = "@+id/pwd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"
+        android:hint = "비밀번호"
+        android:fontFamily="@font/jal"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textSize="15dp"
+        android:textColor="@color/white">
+    </EditText>
+
+    <EditText
+        android:id = "@+id/pwdCheck"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"
+        android:hint = "비밀번호 확인"
+        android:fontFamily="@font/jal"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        android:textSize="15dp"
+        android:textColor="@color/white">
+    </EditText>
+
+    <TextView
+        android:id = "@+id/pwdText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:text="▶비밀번호는 8자이상 입력하세요."
+        android:fontFamily="@font/jal"
+        android:textColor="#1B5E20">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id = "@+id/email"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint = "이메일"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="15dp"
+            android:textColor="@color/white">
+        </EditText>
+
+        <Button
+            android:id = "@+id/emailCheckBtn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="중복확인"
+            android:fontFamily="@font/jal"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/green">
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id = "@+id/reNum"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:inputType="number"
+            android:maxLength="6"
+            android:hint = "주민등록번호"
+            android:fontFamily="@font/jal"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:textSize="15dp"
+            android:textColor="@color/white">
+        </EditText>
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="45dp"
+            android:text="-"
+            android:textColor="@color/white">
+        </TextView>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textSize="45dp"
+            android:text=" •••••••"
+            android:textColor="@color/white">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id = "@+id/phoneNum"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="11"
+            android:hint="핸드폰 번호"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/jal"
+            android:textSize="18dp"
+            android:textColor="@color/white">
+        </EditText>
+
+        <Button
+            android:id = "@+id/phoneCheckBtn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text = "중복확인"
+            android:fontFamily="@font/jal"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/green">
+        </Button>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id = "@+id/completionBtn"
+        android:layout_width="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="가입완료"
+        android:fontFamily="@font/jal"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/green">
+    </Button>
+
+</LinearLayout>
